@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  A BIRTHDAY WEBSITE FOR JAIN — made by Tinoj
+  ============================================================
+  HOW TO ADD REAL PHOTOS (read this before giving the gift!):
+  1. Find the section below marked "PHOTO GALLERY" and the three
+     "polaroid" cards inside "OUR STORY" timeline.
+  2. Each photo currently looks like: <div class="photo-placeholder">📷</div>
+  3. Replace that whole div with:
+       <img class="photo-real" src="YOUR-IMAGE-FILE.jpg" alt="">
+     — put your image files in the same folder as this HTML file,
+     and just use the filename (e.g. src="us-goa.jpg").
+  4. .photo-real is already styled to fit the polaroid frame nicely.
+  That's it — everything else works as-is. Happy gifting! 🎈
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Jain 🎉</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush: #FFF1F6;
+    --ink: #3A2942;
+    --pink: #FF6F9C;
+    --yellow: #FFD23F;
+    --sky: #5FC9F8;
+    --grape: #9D6FFF;
+    --paper: #FFFDF9;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--blush);
+    color: var(--ink);
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3{
+    font-family: 'Baloo 2', cursive;
+    margin: 0;
+  }
+
+  .hand{ font-family: 'Caveat', cursive; }
+
+  section{
+    position: relative;
+    padding: 90px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+  }
+
+  .balloon{
+    position: absolute;
+    bottom: -160px;
+    width: 60px;
+    height: 74px;
+    border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+    opacity: 0.85;
+    animation: float 14s linear infinite;
+  }
+  .balloon::after{
+    content:'';
+    position:absolute;
+    bottom:-38px;
+    left:50%;
+    width:1px;
+    height:38px;
+    background: rgba(58,41,66,0.35);
+  }
+  .b1{ left: 8%;  background: var(--pink);  animation-duration: 13s; animation-delay: 0s; }
+  .b2{ left: 22%; background: var(--yellow); animation-duration: 16s; animation-delay: 2s; }
+  .b3{ left: 68%; background: var(--sky);    animation-duration: 15s; animation-delay: 1s; }
+  .b4{ left: 84%; background: var(--grape);  animation-duration: 12s; animation-delay: 3.5s; }
+  .b5{ left: 45%; background: var(--pink);   animation-duration: 17s; animation-delay: 5s; }
+
+  @keyframes float{
+    0%   { transform: translateY(0) rotate(0deg); }
+    50%  { transform: translateY(-70vh) rotate(6deg); }
+    100% { transform: translateY(-140vh) rotate(-4deg); }
+  }
+
+  .confetti-piece{
+    position: absolute;
+    top: -20px;
+    width: 9px;
+    height: 14px;
+    opacity: 0.9;
+    animation: fall linear forwards;
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(360deg); opacity: 0.4; }
+  }
+
+  .eyebrow{
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    color: var(--pink);
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .headline{
+    font-size: clamp(2.6rem, 8vw, 5.2rem);
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+  .headline .pop{ color: var(--pink); }
+
+  .subline{
+    margin-top: 18px;
+    font-size: 1.15rem;
+    max-width: 480px;
+    color: rgba(58,41,66,0.75);
+  }
+
+  .chip{
+    margin-top: 34px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-weight: 700;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .chip span.num{ color: var(--pink); font-family:'Baloo 2',cursive; font-size:1.2rem; }
+
+  .scroll-hint{
+    margin-top: 56px;
+    font-size: 0.95rem;
+    color: rgba(58,41,66,0.5);
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(8px); }
+  }
+
+  /* ---------- SECTION TITLES ---------- */
+
+  .section-title{
+    text-align: center;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin-bottom: 8px;
+  }
+  .section-sub{
+    text-align: center;
+    color: rgba(58,41,66,0.6);
+    margin-bottom: 60px;
+    font-size: 1.05rem;
+  }
+
+  /* ---------- TIMELINE ---------- */
+
+  .timeline{
+    position: relative;
+  }
+  .timeline::before{
+    content:'';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: repeating-linear-gradient(to bottom, var(--grape) 0 10px, transparent 10px 20px);
+    transform: translateX(-50%);
+  }
+
+  .memory{
+    display: flex;
+    align-items: center;
+    margin-bottom: 70px;
+    position: relative;
+  }
+  .memory:last-child{ margin-bottom: 0; }
+  .memory-dot{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 18px;
+    height: 18px;
+    background: var(--yellow);
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  .memory-card{
+    width: 44%;
+    background: var(--paper);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 6px 6px 0 rgba(58,41,66,0.15);
+    border: 2px solid var(--ink);
+  }
+  .memory:nth-child(odd) .memory-card{ margin-left: auto; transform: rotate(-1.5deg); }
+  .memory:nth-child(even) .memory-card{ margin-right: auto; transform: rotate(1.5deg); }
+
+  .photo-placeholder{
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+  .memory:nth-child(1) .photo-placeholder{ background: linear-gradient(135deg, var(--pink), var(--yellow)); }
+  .memory:nth-child(2) .photo-placeholder{ background: linear-gradient(135deg, var(--sky), var(--grape)); }
+  .memory:nth-child(3) .photo-placeholder{ background: linear-gradient(135deg, var(--yellow), var(--sky)); }
+
+  .photo-real{
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .memory-title{
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+  }
+  .memory-caption{
+    font-family: 'Caveat', cursive;
+    font-size: 1.25rem;
+    color: rgba(58,41,66,0.8);
+    line-height: 1.3;
+  }
+
+  /* ---------- GALLERY ---------- */
+
+  .gallery-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    gap: 28px 22px;
+    margin-top: 20px;
+  }
+  .polaroid{
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    padding: 12px 12px 20px;
+    box-shadow: 5px 5px 0 rgba(58,41,66,0.15);
+  }
+  .polaroid:nth-child(1){ transform: rotate(-4deg); }
+  .polaroid:nth-child(2){ transform: rotate(3deg); }
+  .polaroid:nth-child(3){ transform: rotate(-2deg); }
+  .polaroid:nth-child(4){ transform: rotate(5deg); }
+  .polaroid:nth-child(5){ transform: rotate(-4deg); }
+  .polaroid:nth-child(6){ transform: rotate(3deg); }
+  .polaroid:nth-child(7){ transform: rotate(-2deg); }
+  .polaroid:nth-child(8){ transform: rotate(5deg); }
+  .polaroid:nth-child(8){ transform: rotate(-4deg); }
+  .polaroid .photo-placeholder{ font-size: 1.8rem; }
+  .polaroid:nth-child(1) .photo-placeholder{ background: linear-gradient(135deg, var(--pink), var(--sky)); }
+  .polaroid:nth-child(2) .photo-placeholder{ background: linear-gradient(135deg, var(--yellow), var(--pink)); }
+  .polaroid:nth-child(3) .photo-placeholder{ background: linear-gradient(135deg, var(--grape), var(--yellow)); }
+  .polaroid:nth-child(4) .photo-placeholder{ background: linear-gradient(135deg, var(--sky), var(--grape)); }
+  .polaroid:nth-child(5) .photo-placeholder{ background: linear-gradient(135deg, var(--pink), var(--sky)); }
+  .polaroid:nth-child(6) .photo-placeholder{ background: linear-gradient(135deg, var(--yellow), var(--pink)); }
+  .polaroid:nth-child(7) .photo-placeholder{ background: linear-gradient(135deg, var(--grape), var(--yellow)); }
+  .polaroid:nth-child(8) .photo-placeholder{ background: linear-gradient(135deg, var(--sky), var(--grape)); }
+  .polaroid:nth-child(9) .photo-placeholder{ background: linear-gradient(135deg, var(--yellow), var(--pink)); }
+  .polaroid p{
+    font-family: 'Caveat', cursive;
+    font-size: 1.15rem;
+    text-align: center;
+    margin: 0;
+    color: rgba(58,41,66,0.8);
+  }
+
+  /* ---------- LOVE LETTER ---------- */
+
+  .letter-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .envelope{
+    width: 280px;
+    height: 190px;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 40px;
+  }
+  .envelope-body{
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    box-shadow: 6px 6px 0 rgba(58,41,66,0.15);
+  }
+  .envelope-flap{
+    position: absolute;
+    top: -2px; left: -2px; right: -2px;
+    height: 96px;
+    background: var(--pink);
+    clip-path: polygon(0 0, 50% 68%, 100% 0);
+    border-radius: 10px 10px 0 0;
+    border: 2px solid var(--ink);
+    transform-origin: top;
+    transition: transform 0.6s ease;
+    z-index: 3;
+  }
+  .envelope.open .envelope-flap{
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+  .envelope-seal{
+    position: absolute;
+    top: 62px; left: 50%;
+    transform: translateX(-50%);
+    width: 42px; height: 42px;
+    background: var(--yellow);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    z-index: 4;
+    transition: opacity 0.3s ease;
+  }
+  .envelope.open .envelope-seal{ opacity: 0; }
+
+  .envelope-hint{
+    position: absolute;
+    bottom: -34px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    color: rgba(58,41,66,0.6);
+    white-space: nowrap;
+  }
+
+  .letter-paper{
+    max-width: 560px;
+    width: 100%;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    padding: 40px 34px;
+    box-shadow: 8px 8px 0 rgba(58,41,66,0.12);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.6s ease, max-height 0.8s ease;
+  }
+  .letter-paper.show{
+    opacity: 1;
+    max-height: 1200px;
+  }
+  .letter-paper p{
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+  .letter-sign{
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    color: var(--pink);
+    margin-top: 10px;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer{
+    text-align: center;
+    padding: 50px 20px 70px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    color: rgba(58,41,66,0.7);
+  }
+
+  @media (max-width: 640px){
+    .memory{ flex-direction: column; align-items: stretch; }
+    .memory-card, .memory:nth-child(odd) .memory-card, .memory:nth-child(even) .memory-card{
+      width: 100%;
+      margin: 0 0 0 32px;
+    }
+    .timeline::before{ left: 14px; }
+    .memory-dot{ left: 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .balloon, .confetti-piece, .scroll-hint{ animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="hero">
+  <div class="balloon b1"></div>
+  <div class="balloon b2"></div>
+  <div class="balloon b3"></div>
+  <div class="balloon b4"></div>
+  <div class="balloon b5"></div>
+
+  <div class="eyebrow">a little something made just for you</div>
+  <h1 class="headline">Happy Birthday,<br><span class="pop">Jain!</span> 🎂</h1>
+  <p class="subline">You get one page of the internet, all to yourself, for at least the next 5 minutes. Scroll down, love.</p>
+
+  <div class="chip">🗓️ together for <span class="num" id="dayCount">…</span> days and counting</div>
+
+  <div class="scroll-hint">↓ keep scrolling ↓</div>
+</div>
+
+<!-- ================= TIMELINE ================= -->
+<section id="story">
+  <h2 class="section-title">Our Story So Far</h2>
+  <p class="section-sub">a few of the moments I still think about</p>
+
+  <div class="timeline">
+
+    <div class="memory">
+      <div class="memory-card">
+        <img class="photo-real" src="first.jpg" alt="😘">
+        <h3 class="memory-title">The Awkward First Kiss</h3>
+        <p class="memory-caption hand">Officially the clumsiest, most perfect first kiss in recorded history. We still laugh about it.</p>
+      </div>
+      <div class="memory-dot"></div>
+    </div>
+
+    <div class="memory">
+      <div class="memory-card">
+        <img class="photo-real" src="ride.jpg" alt="🛵">
+        <h3 class="memory-title">Scooter Lessons</h3>
+        <p class="memory-caption hand">The day I first tried to teach you how to ride. Sure the day was interesting afterwards.</p>
+      </div>
+      <div class="memory-dot"></div>
+    </div>
+
+    <div class="memory">
+      <div class="memory-card">
+        <img class="photo-real" src="night.png" alt="📞">
+        <h3 class="memory-title">3AM, Still Talking</h3>
+        <p class="memory-caption hand">Every one of our calls were way past our bedtime because neither of us wanted to hang up first.</p>
+      </div>
+      <div class="memory-dot"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PHOTO GALLERY ================= -->
+<!-- PHOTO GALLERY: swap each .photo-placeholder div for <img class="photo-real" src="..."> -->
+<section id="gallery">
+  <h2 class="section-title">Us, In No Particular Order</h2>
+  
+
+  <div class="gallery-grid">
+    <div class="polaroid"><img class="photo-real" src="one.jpg" alt=""><p>Iftar</p></div>
+    <div class="polaroid"><img class="photo-real" src="two.jpg" alt=""><p>Akkede Kalyanam</p></div>
+    <div class="polaroid"><img class="photo-real" src="three.jpg" alt=""><p>Thanjavur</p></div>
+    <div class="polaroid"><img class="photo-real" src="four.jpg" alt=""><p>One last walk through were we met</p></div>
+    <div class="polaroid"><img class="photo-real" src="five.jpg" alt=""><p>One happy night</p></div>
+    <div class="polaroid"><img class="photo-real" src="six.jpg" alt=""><p>Another happy night</p></div>
+    <div class="polaroid"><img class="photo-real" src="seven.jpg" alt=""><p>Forever like this</p></div>
+    <div class="polaroid"><img class="photo-real" src="eight.jpg" alt=""><p>Yet another happy night</p></div>
+    <div class="polaroid"><img class="photo-real" src="nine.jpg" alt=""><p>And one more in the rain</p></div>
+  </div>
+</section>
+
+<!-- ================= LOVE LETTER ================= -->
+<section id="letter">
+  <h2 class="section-title">One More Thing</h2>
+  <p class="section-sub">tap the envelope</p>
+
+  <div class="letter-wrap">
+    <div class="envelope" id="envelope">
+      <div class="envelope-body"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-seal">💌</div>
+      <div class="envelope-hint">(tap me)</div>
+    </div>
+
+    <div class="letter-paper" id="letterPaper">
+      <p>My Jain,</p>
+      <p>Happy birthday. I don't say it often enough, so let me put it in writing where you can come back to it whenever you want: I'm really, really glad May 10th, 2024 happened.</p>
+      <p>I think about the little things more than the big ones — that first, wonderfully awkward kiss where neither of us knew what we were doing. Trying (and mostly failing) to teach you to ride a scooter, and somehow that turned into one of my favourite memories instead of a disaster. All those calls that went on way past when either of us should've been asleep, just because talking to you was better than sleeping.</p>
+      <p>I made you a whole tiny website because you deserve more than a text message on your birthday. There's more room for photos above — I'll get around to adding them, promise.</p>
+      <p>Here's to another year of awkward kisses, terrible scooter lessons, and calls that go on too long.</p>
+      <p class="letter-sign">All my love, Tinoj 🤍</p>
+    </div>
+  </div>
+</section>
+
+<footer>made with love (and mild html debugging) by Tinoj 🎈</footer>
+
+<script>
+  // Together-for-X-days counter
+  (function(){
+    var start = new Date('2024-05-10T00:00:00');
+    var now = new Date();
+    var diffDays = Math.floor((now - start) / (1000*60*60*24));
+    document.getElementById('dayCount').textContent = diffDays;
+  })();
+
+  // Confetti burst on load (skipped if reduced motion preferred)
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
+    var colors = ['#FF6F9C', '#FFD23F', '#5FC9F8', '#9D6FFF'];
+    var hero = document.getElementById('hero');
+    for(var i = 0; i < 45; i++){
+      var piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random()*100 + '%';
+      piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+      piece.style.animationDuration = (2.5 + Math.random()*2) + 's';
+      piece.style.animationDelay = (Math.random()*1.2) + 's';
+      hero.appendChild(piece);
+    }
+  })();
+
+  // Envelope open/close
+  document.getElementById('envelope').addEventListener('click', function(){
+    this.classList.toggle('open');
+    var letter = document.getElementById('letterPaper');
+    letter.classList.toggle('show');
+    if(letter.classList.contains('show')){
+      setTimeout(function(){ letter.scrollIntoView({behavior:'smooth', block:'center'}); }, 300);
+    }
+  });
+</script>
+
+</body>
+</html>
